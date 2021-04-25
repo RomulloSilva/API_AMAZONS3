@@ -1,0 +1,27 @@
+{"properties": [
+  {
+    "name": "amazonPropiedades",
+    "type": "java.lang.String",
+    "description": "A description for 'amazonPropiedades'"
+  },
+  {
+    "name": "appIdDaChave",
+    "type": "java.lang.String",
+    "description": "A description for 'appIdDaChave'"
+  },
+  {
+    "name": "appChaveSecreta",
+    "type": "java.lang.String",
+    "description": "A description for 'appChaveSecreta'"
+  },
+  {
+    "name": "idDaChave",
+    "type": "java.lang.String",
+    "description": "A description for 'idDaChave'"
+  },
+  {
+    "name": "chaveSecreta",
+    "type": "java.lang.String",
+    "description": "A description for 'chaveSecreta'"
+  }
+]}
