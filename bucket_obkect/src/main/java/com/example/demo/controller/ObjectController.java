@@ -16,8 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.amazonaws.services.rekognition.model.S3Object;
 import com.amazonaws.services.s3.model.Bucket;
+import com.amazonaws.services.s3.model.Grant;
+import com.amazonaws.services.s3.model.ListObjectsV2Result;
 import com.amazonaws.services.s3.model.ObjectListing;
+import com.amazonaws.services.s3.model.ObjectMetadata;
+import com.amazonaws.services.s3.model.S3ObjectInputStream;
+import com.amazonaws.services.s3.model.S3ObjectSummary;
 import com.example.demo.domain.entity.BucketObject;
+import com.example.demo.domain.entity.Documento;
 import com.example.demo.service.BucketService;
 
 @RestController
@@ -36,30 +42,26 @@ public class ObjectController {
 	public ResponseEntity<String> HelthCheck() {
 		return ResponseEntity.ok(abiente);
 	}
-	
 	@GetMapping("/buckets")
 	public List<Bucket> ListarBuckets(){
 		return bucketService.ListaTodosBuckets();
 	}
-	
-	
 	@GetMapping("/objetos")
 	public ObjectListing ListaObjetosDoBucket() {
 		return bucketService.pegarTodosObjetos();
 	}
-	
-	
-	@GetMapping("/teste")
+	@GetMapping("/uri")
 	public URI PegaObjeto( @RequestParam String key ) throws URISyntaxException {
 		return bucketService.obj(key);
 	}
-	
 	@GetMapping("/objeto")
 	public String pegarObjetoPeloNome(@RequestParam String key) {return bucketService.pegarObjetoPeloId(key); }
-	
-	
-	@GetMapping("/testes")
-	public com.amazonaws.services.s3.model.S3Object objetoUnico(@RequestParam String Key) {return bucketService.objeetos(Key);}
-	
-
+	@GetMapping("/sumario")
+	public List<S3ObjectSummary> sumario(@RequestParam String key){return bucketService.listarObjetos2(key);}
+	@GetMapping("/protocolo")
+	public List<Documento> objetoUnicoo(@RequestParam String codDiretorio) {return bucketService.PegaObjetosDoDiretorio(codDiretorio);}
+	@GetMapping("/type")
+	public String tipoDoObjeto(@RequestParam String key) {return bucketService.metadata(key);}
+	@GetMapping("/users")
+	public List<Grant> usuariosDoObjeto(@RequestParam String key){return bucketService.aCL(key);}
 }

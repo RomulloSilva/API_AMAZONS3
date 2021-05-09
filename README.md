@@ -1,2 +1,2 @@
 # API_AMAZONS3
-API Resfull em um bucket da Amazon S3
+Restful API in an Amazon S3 bucket - At the moment just get in bucket S3
